@@ -1,0 +1,12 @@
+table {
+  position: absolute;
+  left: 50%;
+  margin-left: -90px;
+  top: 10%;
+}
+
+td {
+  border: 10px solid black;
+  height: 60px;
+  width: 60px;
+}

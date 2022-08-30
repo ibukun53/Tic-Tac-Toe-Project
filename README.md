@@ -1,10 +1,8 @@
-# Project Name
+# Tic-Tac-Toe Project
 
-> One paragraph statement about the project.
+>
 
-![screenshot](./app_screenshot.png)
-
-Additional description about the project and its features.
+![screenshot]()
 
 ## Built With
 
@@ -14,14 +12,14 @@ Additional description about the project and its features.
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](/)
 
 ### Development (Running locally)
 
 - Clone the project
 
 ```bash
-git clone https://github.com/user/html-css-template.git
+git clone https://github.com/ibukun53/Tic-Tac-Toe-Project.git
 
 ```
 
@@ -32,3 +30,43 @@ npm run install
 ```
 
 To run StyleLint by itself, you may run the lint task:
+
+```bash
+npm run lint:check
+```
+
+Or to automatically fix issues found (where possible):
+
+```bash
+npm run lint
+```
+
+You can also check against Prettier:
+
+```bash
+npm run format:check
+```
+
+and to have it actually fix (to the best of its ability) any format issues, run:
+
+```bash
+npm run format
+```
+
+You can also check against HTML Validator:
+
+```bash
+npm run html-validator
+```
+
+## Style Guides
+
+- [CSS Style Guide](http://udacity.github.io/frontend-nanodegree-styleguide/css.html)
+- [HTML Style Guide](http://udacity.github.io/frontend-nanodegree-styleguide/index.html)
+- [JavaScript Style Guide](http://udacity.github.io/frontend-nanodegree-styleguide/javascript.html)
+- [Git Style Guide](https://udacity.github.io/git-styleguide/)
+
+## 👤 Author
+
+- Github: [@ibukun53](https://github.com/ibukun53/)
+- Linkedin: [@olusanya](https://www.linkedin.com/in/ibukun53/)
