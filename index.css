@@ -15,6 +15,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
 }
 
 .select-box {
@@ -27,7 +28,12 @@ body {
   border-radius: 5px;
   max-width: 330px;
   width: 100%;
-  display: none;
+}
+
+.select-box.hide {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+  pointer-events: none;
 }
 
 .select-box header {
@@ -70,7 +76,15 @@ body {
 }
 
 .play-board {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.play-board.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .play-board .play-area {
@@ -100,6 +114,7 @@ body {
   text-align: center;
   position: relative;
   z-index: 5;
+  transition: all 0.3s ease;
 }
 
 .details span:first-child {
@@ -115,6 +130,19 @@ body {
   left: 0;
   width: 50%;
   height: 100%;
+  transition: all 0.3s ease;
+}
+
+.players.active span:first-child {
+  color: blue;
+}
+
+.players.active span:nth-child(2) {
+  color: white;
+}
+
+.players.active .slider {
+  left: 50%;
 }
 
 .play-board section {
