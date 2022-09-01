@@ -33,9 +33,10 @@ function bot() {
       // console.log(`${i}`+ '  ' + 'no child element');
     }
   }
+
   const randomCell = array[Math.floor(Math.random() * array.length)];
   // getting random indexes from array to bot
-  console.log(randomCell);
+
   if (array.length > 0) {
     if (players.classList.contains('player')) {
       allBox[randomCell].innerHTML += `<i class="${playerXIcon}"></i>`;// adding circle icon tag inside user clicked element
@@ -46,22 +47,21 @@ function bot() {
     }
   }
   allBox[randomCell].style.pointerEvents = 'none';
-  //
 }
 
 // user click function
 function clickedCell(element) {
   if (players.classList.contains('player')) {
     element.innerHTML += `<i class="${playerOIcon}"></i>`;// adding circle icon tag inside user clicked element
-    players.classList.add('active');
+    players.classList.remove('active');
   } else {
     element.innerHTML += `<i class="${playerXIcon}"></i>`;
-    players.classList.add('active');
+    players.classList.remove('active');
   }
-  element.style.pointerEvents = 'none';//
-  // generate randomtimedelay so as to delay randoml to select cell
+  // disabling the cell to unclickable after a click
+  element.style.pointerEvents = 'none';
+  // generate randomtime delay so as to delay randoml to select cell
   const randomDelayTime = ((Math.random() * 1000) + 200).toFixed();
-  console.log(randomDelayTime);
   setTimeout(() => {
     bot();// calling bot function
   }, randomDelayTime);// passing random delay time;
