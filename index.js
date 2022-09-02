@@ -24,7 +24,7 @@ window.onload = () => { // once window load
 
 const playerXIcon = 'fa fa-times';
 const playerOIcon = 'fa fa-circle';
-let playerSign = 'X';
+let playerSign = 'X'; // suppose player will be X
 
 // bot click function
 function bot() {
@@ -45,8 +45,6 @@ function bot() {
     if (players.classList.contains('player')) {
       allBox[randomCell].innerHTML += `<i class="${playerXIcon}"></i>`;// adding circle icon tag inside user clicked element
       players.classList.add('active');
-      playerSign = 'X';
-      allBox[randomCell].setAttribute('id', playerSign);
     } else {
       allBox[randomCell].innerHTML += `<i class="${playerOIcon}"></i>`;
       players.classList.add('active');
@@ -84,16 +82,16 @@ function selectWinner() {
 
 // user click function
 function clickedCell(element) {
+  // player element has contains .player
   if (players.classList.contains('player')) {
     // adding circle icon tag inside user clicked element
     element.innerHTML += `<i class="${playerOIcon}"></i>`;
     players.classList.remove('active');
-    // if player select O then we'll change the playerSign value to O
-    playerSign = 'O';
-    element.setAttribute('id', playerSign);
+  // if player select O then we'll change the playerSign value to O
   } else {
     element.innerHTML += `<i class="${playerXIcon}"></i>`;
     players.classList.remove('active');
+    playerSign = 'X';
     element.setAttribute('id', playerSign);
   }
   selectWinner();
