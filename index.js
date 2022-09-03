@@ -37,14 +37,14 @@ function bot() {
       // console.log(`${i}`+ '  ' + 'no child element');
     }
   }
-
   const randomCell = array[Math.floor(Math.random() * array.length)];
   // getting random indexes from array to bot
-
   if (array.length > 0) {
     if (players.classList.contains('player')) {
       allBox[randomCell].innerHTML += `<i class="${playerXIcon}"></i>`;// adding circle icon tag inside user clicked element
       players.classList.add('active');
+      playerSign = 'X';
+      allBox[randomCell].setAttribute('id', playerSign);
     } else {
       allBox[randomCell].innerHTML += `<i class="${playerOIcon}"></i>`;
       players.classList.add('active');
@@ -55,15 +55,15 @@ function bot() {
 }
 
 // winner result
-function getId(idname) {
-  return document.querySelector(`#cell${idname}.id`); // returning id names
+function getId() {
+  return document.querySelector('.cell').id;// returning id names
 }
 // checking id names
 function checkIds(val0, val1, val2, sign) {
   if (getId(val0) === sign && getId(val1) === sign && getId(val2) === sign) {
     return true;
   }
-  return false;
+  return true;
 }
 
 function selectWinner() {
@@ -75,23 +75,25 @@ function selectWinner() {
   || checkIds(2, 5, 8, playerSign)
   || checkIds(0, 4, 8, playerSign)
   || checkIds(2, 4, 6, playerSign)) {
-    console.log(`${playerSign} ` + 'is the winner');
+    console.log(`${playerSign}`);
   }
   //
 }
 
 // user click function
 function clickedCell(element) {
+  playerSign = 'X';
   // player element has contains .player
   if (players.classList.contains('player')) {
     // adding circle icon tag inside user clicked element
     element.innerHTML += `<i class="${playerOIcon}"></i>`;
     players.classList.remove('active');
+    playerSign = 'O';
+    element.setAttribute('id', playerSign);
   // if player select O then we'll change the playerSign value to O
   } else {
     element.innerHTML += `<i class="${playerXIcon}"></i>`;
     players.classList.remove('active');
-    playerSign = 'X';
     element.setAttribute('id', playerSign);
   }
   selectWinner();
