@@ -170,13 +170,22 @@ td {
   border-radius: 5px;
 }
 
-.result-box {
-  background: white;
-  padding: 20px;
+.result-box{
+  padding: 25px 20px;
   border-radius: 5px;
-  max-width: 350px;
+  max-width: 400px;
   width: 100%;
-  display: none;
+  opacity: 0;
+  text-align: center;
+  background: #fff;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.result-box.show{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .result-box .win-text {
@@ -195,6 +204,7 @@ td {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  justify-content: center;
 }
 
 .result-box .btn button {

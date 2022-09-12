@@ -94,7 +94,6 @@ function clickedCell(element) {
   }
   selectWinner(); // calling the winner
   // disabling the cell to unclickable after a click
-  
   element.style.pointerEvents = 'none';
   // generate randomtime delay so as to delay randoml to select cell
   const randomDelayTime = ((Math.random() * 1000) + 200).toFixed();
