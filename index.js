@@ -52,34 +52,30 @@ function bot() {
     }
   }
   allBox[randomCell].style.pointerEvents = 'none';
-}
-
-// winner result
-function getId() {
-  return document.querySelector('.cell').id;// returning id names
-}
-// checking id names
-function checkIds(val0, val1, val2, sign) {
-  if (getId(val0) === sign && getId(val1) === sign && getId(val2) === sign) {
-    return true;
-  }
-  return true;
+  players.style.pointerEvents = 'auto';
 }
 
 function selectWinner() {
-  if (checkIds(0, 1, 2, playerSign)
-  || checkIds(3, 4, 5, playerSign)
-  || checkIds(6, 7, 8, playerSign)
-  || checkIds(0, 3, 6, playerSign)
-  || checkIds(1, 4, 7, playerSign)
-  || checkIds(2, 5, 8, playerSign)
-  || checkIds(0, 4, 8, playerSign)
-  || checkIds(2, 4, 6, playerSign)) {
-    console.log(`${playerSign}`);
+  const cell0 = document.querySelector('.b0').id;
+  const cell1 = document.querySelector('.b1').id;
+  const cell2 = document.querySelector('.b2').id;
+  const cell3 = document.querySelector('.b3').id;
+  const cell4 = document.querySelector('.b4').id;
+  const cell5 = document.querySelector('.b5').id;
+  const cell6 = document.querySelector('.b6').id;
+  const cell7 = document.querySelector('.b7').id;
+  const cell8 = document.querySelector('.b8').id;
+  if ((cell0 === playerSign && cell1 === playerSign && cell2 === playerSign)
+  || (cell3 === playerSign && cell4 === playerSign && cell5 === playerSign)
+  || (cell6 === playerSign && cell7 === playerSign && cell8 === playerSign)
+  || (cell0 === playerSign && cell4 === playerSign && cell8 === playerSign)
+  || (cell2 === playerSign && cell4 === playerSign && cell6 === playerSign)
+  || (cell0 === playerSign && cell3 === playerSign && cell6 === playerSign)
+  || (cell1 === playerSign && cell4 === playerSign && cell7 === playerSign)
+  || (cell2 === playerSign && cell5 === playerSign && cell8 === playerSign)) {
+    console.log(`${playerSign}   is the won`);
   }
-  //
 }
-
 // user click function
 function clickedCell(element) {
   playerSign = 'X';
@@ -96,8 +92,9 @@ function clickedCell(element) {
     players.classList.remove('active');
     element.setAttribute('id', playerSign);
   }
-  selectWinner();
+  selectWinner(); // calling the winner
   // disabling the cell to unclickable after a click
+  
   element.style.pointerEvents = 'none';
   // generate randomtime delay so as to delay randoml to select cell
   const randomDelayTime = ((Math.random() * 1000) + 200).toFixed();
