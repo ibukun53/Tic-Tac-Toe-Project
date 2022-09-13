@@ -170,7 +170,7 @@ td {
   border-radius: 5px;
 }
 
-.result-box{
+.result-box {
   padding: 25px 20px;
   border-radius: 5px;
   max-width: 400px;
@@ -182,7 +182,7 @@ td {
   transform: translate(-50%, -50%) scale(0.9);
 }
 
-.result-box.show{
+.result-box.show {
   opacity: 1;
   pointer-events: auto;
   transform: translate(-50%, -50%) scale(1);
@@ -204,7 +204,6 @@ td {
   display: flex;
   justify-content: center;
   margin-top: 20px;
-  justify-content: center;
 }
 
 .result-box .btn button {
