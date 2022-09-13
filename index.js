@@ -9,7 +9,7 @@ const resultBox = document.querySelector('.result-box');
 const wonText = document.querySelector('.win-text');
 const replayBtn = document.querySelector('.replay');
 
-window.onload = () => { // once window load
+window.addEventListener('load', () => { // once window load
   for (let i = 0; i < allBox.length; i += 1) { // add onclick attribute to all section table
     allBox[i].setAttribute('onclick', 'clickedCell(this)');
   }
@@ -23,7 +23,7 @@ window.onload = () => { // once window load
     playBoard.classList.add('show');
     players.setAttribute('class', 'players active player');
   });
-};
+});
 
 const playerXIcon = 'fa fa-times';
 const playerOIcon = 'fa fa-circle';
@@ -31,7 +31,7 @@ let playerSign = 'X'; // suppose player will be X
 let runBot = true;
 
 // bot click function
-function bot(runBot) {
+const bot = (runBot) => {
   if (runBot) {
     playerSign = 'O';
     // if user has X value in id then bot will have O
@@ -59,8 +59,9 @@ function bot(runBot) {
     allBox[randomCell].style.pointerEvents = 'none';
     players.style.pointerEvents = 'auto';
   }
-}
-function selectWinner() {
+};
+
+const selectWinner = () => {
   const cell0 = document.querySelector('.b0').id;
   const cell1 = document.querySelector('.b1').id;
   const cell2 = document.querySelector('.b2').id;
@@ -94,16 +95,16 @@ function selectWinner() {
       playBoard.classList.remove('show');
       resultBox.classList.add('show');
     }, 700);
-    wonText.textContent = 'Match has been drawn';
+    wonText.textContent = 'Match has been drawn!';
   }
-}
+};
 
 replayBtn.addEventListener('click', () => { // relaod the current page
   window.location.reload();
 });
 
 // user click function
-function clickedCell(element) {
+const clickedCell = (element) => {
   playerSign = 'X';
   // player element has contains .player
   if (players.classList.contains('player')) {
@@ -127,5 +128,5 @@ function clickedCell(element) {
   setTimeout(() => {
     bot(runBot);// calling bot function
   }, randomDelayTime);// passing random delay time;
-}
+};
 clickedCell();
