@@ -1,4 +1,5 @@
 // selecting required element
+const section = document.querySelector('section');
 const selectBox = document.querySelector('.select-box');
 const selectXBtn = selectBox.querySelector('.playerX');
 const selectOBtn = selectBox.querySelector('.playerY');
@@ -9,7 +10,7 @@ const resultBox = document.querySelector('.result-box');
 const wonText = document.querySelector('.win-text');
 const replayBtn = document.querySelector('.replay');
 
-window.addEventListener('load', () => { // once window load
+section.addEventListener('click', () => { // once window load
   for (let i = 0; i < allBox.length; i += 1) { // add onclick attribute to all section table
     allBox[i].setAttribute('onclick', 'clickedCell(this)');
   }
@@ -100,7 +101,9 @@ const selectWinner = () => {
 };
 
 replayBtn.addEventListener('click', () => { // relaod the current page
-  window.location.reload();
+  resultBox.classList.remove('show');
+  playBoard.classList.add('show');
+  playerSign = '';
 });
 
 // user click function
