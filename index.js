@@ -104,7 +104,6 @@ const selectWinner = () => {
 replayBtn.addEventListener('click', () => { // relaod the current page
   resultBox.classList.remove('show');
   playBoard.classList.add('show');
-  playerSign = '';
 });
 
 // user click function
