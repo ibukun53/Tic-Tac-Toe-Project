@@ -2,7 +2,7 @@
 const section = document.querySelector('section');
 const selectBox = document.querySelector('.select-box');
 const selectXBtn = selectBox.querySelector('.playerX');
-const selectOBtn = selectBox.querySelector('.playerY');
+const selectOBtn = selectBox.querySelector('.playerO');
 const playBoard = document.querySelector('.play-board');
 const allBox = document.querySelectorAll('tr td');
 const players = document.querySelector('.players');
@@ -12,7 +12,8 @@ const replayBtn = document.querySelector('.replay');
 
 section.addEventListener('click', () => { // once window load
   for (let i = 0; i < allBox.length; i += 1) { // add onclick attribute to all section table
-    allBox[i].setAttribute('onclick', 'clickedCell(this)');
+    // eslint-disable-next-line no-use-before-define
+    allBox[i].addEventListener('click', clickedCell());
   }
 
   selectXBtn.addEventListener('click', () => {
@@ -22,7 +23,7 @@ section.addEventListener('click', () => { // once window load
   selectOBtn.addEventListener('click', () => {
     selectBox.classList.add('hide');
     playBoard.classList.add('show');
-    players.setAttribute('class', 'players active player');
+    players.classList.add('players', 'active', 'player');
   });
 });
 
@@ -107,7 +108,9 @@ replayBtn.addEventListener('click', () => { // relaod the current page
 });
 
 // user click function
-const clickedCell = (element) => {
+const clickedCell = (event) => {
+  console.log({ event });
+  const element = event.target;
   playerSign = 'X';
   // player element has contains .player
   if (players.classList.contains('player')) {
@@ -132,4 +135,3 @@ const clickedCell = (element) => {
     bot(runBot);// calling bot function
   }, randomDelayTime);// passing random delay time;
 };
-clickedCell();
