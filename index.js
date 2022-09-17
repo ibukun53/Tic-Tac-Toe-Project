@@ -9,11 +9,12 @@ const players = document.querySelector('.players');
 const resultBox = document.querySelector('.result-box');
 const wonText = document.querySelector('.win-text');
 const replayBtn = document.querySelector('.replay');
+let element;
 
 section.addEventListener('click', () => { // once window load
   for (let i = 0; i < allBox.length; i += 1) { // add onclick attribute to all section table
     // eslint-disable-next-line no-use-before-define
-    allBox[i].addEventListener('click', clickedCell());
+    allBox[i].addEventListener('click', clickedCell);
   }
 
   selectXBtn.addEventListener('click', () => {
@@ -108,8 +109,7 @@ replayBtn.addEventListener('click', () => { // relaod the current page
 
 // user click function
 const clickedCell = (event) => {
-  console.log({ event });
-  const element = event.target;
+  element = event.target;
   playerSign = 'X';
   // player element has contains .player
   if (players.classList.contains('player')) {
