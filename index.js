@@ -27,7 +27,7 @@ section.addEventListener('click', () => { // once window load
     players.classList.add('players', 'active', 'player');
   });
 });
-
+let randomCell;
 const playerXIcon = 'fa fa-times';
 const playerOIcon = 'fa fa-circle';
 let playerSign = 'X'; // suppose player will be X
@@ -45,7 +45,7 @@ const bot = (runBot) => {
       // console.log(`${i}`+ '  ' + 'no child element');
       }
     }
-    const randomCell = array[Math.floor(Math.random() * array.length)];
+    randomCell = array[Math.floor(Math.random() * array.length)];
     // getting random indexes from array to bot
     if (array.length > 0) {
       if (players.classList.contains('player')) {
@@ -102,11 +102,6 @@ const selectWinner = () => {
   }
 };
 
-replayBtn.addEventListener('click', () => { // relaod the current page
-  resultBox.classList.remove('show');
-  playBoard.classList.add('show');
-});
-
 // user click function
 const clickedCell = (event) => {
   element = event.target;
@@ -134,3 +129,12 @@ const clickedCell = (event) => {
     bot(runBot);// calling bot function
   }, randomDelayTime);// passing random delay time;
 };
+
+replayBtn.addEventListener('click', () => { // relaod the current page
+  resultBox.classList.remove('show');
+  playBoard.classList.add('show');
+  for (let i = 0; i < allBox.length; i += 1) {
+    allBox[i].innerHTML = '';
+    allBox[i].style.pointerEvents = 'auto';
+  }
+});
