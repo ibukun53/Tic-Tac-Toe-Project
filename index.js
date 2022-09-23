@@ -31,7 +31,7 @@ let randomCell;
 const playerXIcon = 'fa fa-times';
 const playerOIcon = 'fa fa-circle';
 let playerSign = 'X'; // suppose player will be X
-let runBot = true;
+const runBot = true;
 
 // bot click function
 const bot = (runBot) => {
@@ -83,8 +83,6 @@ const selectWinner = () => {
   || (cell1 === playerSign && cell4 === playerSign && cell7 === playerSign)
   || (cell2 === playerSign && cell5 === playerSign && cell8 === playerSign)) {
   // console.log(`${playerSign}   is the won`);
-    runBot = false;
-    bot(runBot);
     setTimeout(() => { // delay the show result box
       playBoard.classList.remove('show');
       resultBox.classList.add('show');
@@ -92,8 +90,6 @@ const selectWinner = () => {
     // result box with winner sign
     wonText.innerHTML = `Player  <p>${playerSign}</p>  won the game`;
   } else if (cell0 !== '' && cell1 !== '' && cell2 !== '' && cell3 !== '' && cell4 !== '' && cell5 !== '' && cell6 !== '' && cell7 !== '' && cell8 !== '') {
-    runBot = false;
-    bot(runBot);
     setTimeout(() => { // delay the show result box
       playBoard.classList.remove('show');
       resultBox.classList.add('show');
@@ -123,18 +119,19 @@ const clickedCell = (event) => {
   // disabling the cell to unclick after a click
   element.style.pointerEvents = 'none';
   players.style.pointerEvents = 'none';
-  // generate randomtime delay so as to delay randoml to select cell
-  const randomDelayTime = ((Math.random() * 1000) + 200).toFixed();
+  // generate randomtime delay so as to delay random to select cell
+  const randomDelayTime = ((Math.random() * 200) + 200).toFixed();
   setTimeout(() => {
     bot(runBot);// calling bot function
   }, randomDelayTime);// passing random delay time;
 };
 
-replayBtn.addEventListener('click', () => { // relaod the current page
+replayBtn.addEventListener('click', () => {
   resultBox.classList.remove('show');
   playBoard.classList.add('show');
   for (let i = 0; i < allBox.length; i += 1) {
     allBox[i].innerHTML = '';
     allBox[i].style.pointerEvents = 'auto';
+    allBox[i].setAttribute('id', '');
   }
 });
