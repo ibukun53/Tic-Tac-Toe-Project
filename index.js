@@ -14,18 +14,19 @@ let element;
 let randomCell;
 const playerXIcon = 'fa fa-times';
 const playerOIcon = 'fa fa-circle';
-let playerSign = 'X'; // suppose player will be X
 const runBot = true;
+let playerSignO = 'O';// suppose player will be O
+let playerSignX = 'X';// suppose player will be X
 
 // bot click function
 const bot = (runBot) => {
   if (runBot) {
-    playerSign = 'O';
+    playerSignO = 'O';
     // if user has X value in id then bot will have O
     const array = []; // creating an empty array
     for (let i = 0; i < allBox.length; i += 1) {
       if (allBox[i].childElementCount === 0) { // if td has no any child element
-        array.push(i);// inserting unselected or unclicked cells indide array section
+        array.push(i);// inserting unselected or unclicked cells inside array section
       }
     }
     randomCell = array[Math.floor(Math.random() * array.length)];
@@ -34,12 +35,13 @@ const bot = (runBot) => {
       if (players.classList.contains('player')) {
         allBox[randomCell].innerHTML += `<i class="${playerXIcon}"></i>`;// adding circle icon tag inside user clicked element
         players.classList.add('active');
-        playerSign = 'X';
-        allBox[randomCell].setAttribute('data-id', playerSign);
+        playerSignX = 'X';
+        allBox[randomCell].setAttribute('data-id', playerSignX);
       } else {
         allBox[randomCell].innerHTML += `<i class="${playerOIcon}"></i>`;
         players.classList.add('active');
-        allBox[randomCell].setAttribute('data-id', playerSign);
+        allBox[randomCell].setAttribute('data-id', playerSignO);
+        console.log(playerSignO);
       }
     }
     allBox[randomCell].style.pointerEvents = 'none';
@@ -56,22 +58,37 @@ const selectWinner = () => {
   const cell6 = document.querySelector('.b6').dataset.id;
   const cell7 = document.querySelector('.b7').dataset.id;
   const cell8 = document.querySelector('.b8').dataset.id;
-  if ((cell0 === playerSign && cell1 === playerSign && cell2 === playerSign)
-  || (cell3 === playerSign && cell4 === playerSign && cell5 === playerSign)
-  || (cell6 === playerSign && cell7 === playerSign && cell8 === playerSign)
-  || (cell0 === playerSign && cell4 === playerSign && cell8 === playerSign)
-  || (cell2 === playerSign && cell4 === playerSign && cell6 === playerSign)
-  || (cell0 === playerSign && cell3 === playerSign && cell6 === playerSign)
-  || (cell1 === playerSign && cell4 === playerSign && cell7 === playerSign)
-  || (cell2 === playerSign && cell5 === playerSign && cell8 === playerSign)) {
+  if ((cell0 === playerSignX && cell1 === playerSignX && cell2 === playerSignX)
+  || (cell3 === playerSignX && cell4 === playerSignX && cell5 === playerSignX)
+  || (cell6 === playerSignX && cell7 === playerSignX && cell8 === playerSignX)
+  || (cell0 === playerSignX && cell4 === playerSignX && cell8 === playerSignX)
+  || (cell2 === playerSignX && cell4 === playerSignX && cell6 === playerSignX)
+  || (cell0 === playerSignX && cell3 === playerSignX && cell6 === playerSignX)
+  || (cell1 === playerSignX && cell4 === playerSignX && cell7 === playerSignX)
+  || (cell2 === playerSignX && cell5 === playerSignX && cell8 === playerSignX)) {
   // console.log(`${playerSign}   is the won`);
     setTimeout(() => { // delay the show result box
       playBoard.classList.remove('show');
       resultBox.classList.add('show');
     }, 700);
     // result box with winner sign
-    wonText.innerHTML = `Player  <p>${playerSign}</p>  won the game`;
-  } else if (cell0 === '' && cell1 === '' && cell2 === '' && cell3 === '' && cell4 === '' && cell5 === '' && cell6 === '' && cell7 === '' && cell8 === '') {
+    wonText.innerHTML = `Player  <p>${playerSignX}</p>  won the game`;
+  } else if ((cell0 === playerSignO && cell1 === playerSignO && cell2 === playerSignO)
+  || (cell3 === playerSignO && cell4 === playerSignO && cell5 === playerSignO)
+  || (cell6 === playerSignO && cell7 === playerSignO && cell8 === playerSignO)
+  || (cell0 === playerSignO && cell4 === playerSignO && cell8 === playerSignO)
+  || (cell2 === playerSignO && cell4 === playerSignO && cell6 === playerSignO)
+  || (cell0 === playerSignO && cell3 === playerSignO && cell6 === playerSignO)
+  || (cell1 === playerSignO && cell4 === playerSignO && cell7 === playerSignO)
+  || (cell2 === playerSignO && cell5 === playerSignO && cell8 === playerSignO)) {
+    console.log(`${playerSignO}   is the won`);
+    setTimeout(() => { // delay the show result box
+      playBoard.classList.remove('show');
+      resultBox.classList.add('show');
+    }, 700);
+    // result box with winner sign
+    wonText.innerHTML = `Player  <p>${playerSignO}</p>  won the game`;
+  } else if (cell0 === '' && cell1 === '' && cell2 === '' && cell3 === '' && cell4 === '' && cell5 === '' && cell6 === '' && cell7 === '' && cell8 !== '') {
     setTimeout(() => { // delay the show result box
       playBoard.classList.remove('show');
       resultBox.classList.add('show');
@@ -83,19 +100,19 @@ const selectWinner = () => {
 // user click function
 const clickedCell = (event) => {
   element = event.target;
-  playerSign = 'X';
+  playerSignX = 'X';
   // player element has contains .player
   if (players.classList.contains('player')) {
     // adding circle icon tag inside user clicked element
     element.innerHTML += `<i class="${playerOIcon}"></i>`;
     players.classList.remove('active');
-    playerSign = 'O';
-    element.setAttribute('data-id', playerSign);
+    playerSignO = 'O';
+    element.setAttribute('data-id', playerSignO);
   // if player select O then we'll change the playerSign value to O
   } else {
     element.innerHTML += `<i class="${playerXIcon}"></i>`;
     players.classList.remove('active');
-    element.setAttribute('data-id', playerSign);
+    element.setAttribute('data-id', playerSignX);
   }
   selectWinner(); // calling the winner
   // disabling the cell to unclick after a click
@@ -126,6 +143,7 @@ section.addEventListener('click', () => { // once window load
 
 replayBtn.addEventListener('click', () => {
   resultBox.classList.remove('show');
+
   playBoard.classList.add('show');
   for (let i = 0; i < allBox.length; i += 1) {
     allBox[i].innerHTML = '';
