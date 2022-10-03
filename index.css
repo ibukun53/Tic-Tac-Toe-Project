@@ -1,12 +1,224 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(60, 60, 145);
+}
+
+.select-box,
+.play-board,
+.result-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+
+.select-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px 25px 25px;
+  border-radius: 5px;
+  max-width: 330px;
+  width: 100%;
+}
+
+.select-box.hide {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+  pointer-events: none;
+}
+
+.select-box header {
+  font-size: 23px;
+  font-weight: 600;
+  padding-bottom: 10px;
+  border-bottom: 1px solid white;
+}
+
+.select-box .title {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 20px 0;
+}
+
+.select-box .options {
+  display: flex;
+  width: 100%;
+}
+
+.select-box button {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 8px 0;
+  border: none;
+  background-color: blue;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.select-box .playerX {
+  margin-right: 5px;
+}
+
+.select-box .playeY {
+  margin-left: 5px;
+}
+
+.play-board {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.play-board.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.play-board .play-area {
+  margin-top: 20px;
+}
+
+.play-board .details {
+  background-color: white;
+  padding: 7px;
+  border-radius: 5px;
+}
+
+.play-board .details .players {
+  display: flex;
+  width: 100%;
+  position: relative;
+  justify-content: space-between;
+}
+
+.play-board .details span {
+  width: 100%;
+  color: blue;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 19px;
+  cursor: default;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+  transition: all 0.3s ease;
+}
+
+.details span:first-child {
+  color: white;
+}
+
+.details .slider {
+  position: absolute;
+  background: blue;
+  border-radius: 5px;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.players.active span:first-child {
+  color: blue;
+}
+
+.players.active span:nth-child(2) {
+  color: white;
+}
+
+.players.active .slider {
+  left: 50%;
+}
+
+.play-board section {
+  display: flex;
+  margin: 2px;
+  height: 220px;
+  width: 230px;
+  background-color: white;
+}
+
 table {
   position: absolute;
   left: 50%;
-  margin-left: -90px;
-  top: 10%;
+  margin-left: -109px;
+  top: 20%;
 }
 
 td {
   border: 10px solid black;
-  height: 60px;
-  width: 60px;
+  height: 70px;
+  width: 70px;
+  font-size: 40px;
+  text-align: center;
+  color: red;
+  border-radius: 5px;
+}
+
+.result-box {
+  padding: 25px 20px;
+  border-radius: 5px;
+  max-width: 400px;
+  width: 100%;
+  opacity: 0;
+  text-align: center;
+  background: #fff;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.result-box.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.result-box .win-text {
+  font-size: 25px;
+  font-weight: 500;
+  justify-content: center;
+  display: flex;
+}
+
+.result-box .win-text p {
+  font-weight: 600;
+  margin: 0 3px;
+}
+
+.result-box .btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.result-box .btn button {
+  font-size: 18px;
+  font-weight: 500;
+  padding: 8px 20px;
+  border: none;
+  background-color: blue;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.options button:hover,
+.result-box .btn button:hover {
+  transform: scale(0.96);
 }

@@ -5,24 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tic-Tac-Toe-Project</title>
     <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
   <body>
-    <table>
-      <tr>
-        <td class="cell" id="0"></td>
-        <td class="cell" id="1"></td>
-        <td class="cell" id="2"></td>
-      </tr>
-      <tr>
-        <td class="cell" id="3"></td>
-        <td class="cell" id="4"></td>
-        <td class="cell" id="5"></td>
-      </tr>
-      <tr>
-        <td class="cell" id="6"></td>
-        <td class="cell" id="7"></td>
-        <td class="cell" id="8"></td>
-      </tr>
-    </table>
+    <section>
+      <div class="select-box">
+        <header>Tic-Tac-Toe</header>
+        <div class="content">
+          <div class="title">
+            Select which one you want to be
+          </div>
+          <div class="options">
+            <button class="playerX">Player (X)</button>
+            <button class="playerO">Player (O)</button>
+          </div>
+        </div>
+      </div>
+      <!--playBoared section-->
+      <div class="play-board">
+        <div class="details">
+          <div class="players">
+            <span class="X turn">X's Turn</span>
+            <span class="O turn">O's Turn</span>
+            <div class="slider"></div>
+          </div>
+        </div>
+        <div class="play-area">
+          <section>
+            <table>
+              <tr>
+                <td class="cell b0"></td>
+                <td class="cell b1"></td>
+                <td class="cell b2"></td>
+              </tr>
+              <tr>
+                <td class="cell b3 "></td>
+                <td class="cell b4"></td>
+                <td class="cell b5"></td>
+              </tr>
+              <tr>
+                <td class="cell b6"></td>
+                <td class="cell b7"></td>
+                <td class="cell b8"></td>
+              </tr>
+            </table>
+          </section>
+        </div>
+      </div>
+      <!--Resultbox-->
+      <div class="result-box">
+        <div class="win-text"></div>
+        <div class="btn">
+          <button class="replay">Replay</button>
+        </div>
+      </div>
+    </section>
+    <script src="index.js"></script>
   </body>
 </html>
