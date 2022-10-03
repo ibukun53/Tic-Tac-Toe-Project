@@ -41,7 +41,6 @@ const bot = (runBot) => {
         allBox[randomCell].innerHTML += `<i class="${playerOIcon}"></i>`;
         players.classList.add('active');
         allBox[randomCell].setAttribute('data-id', playerSignO);
-        console.log(playerSignO);
       }
     }
     allBox[randomCell].style.pointerEvents = 'none';
@@ -81,7 +80,6 @@ const selectWinner = () => {
   || (cell0 === playerSignO && cell3 === playerSignO && cell6 === playerSignO)
   || (cell1 === playerSignO && cell4 === playerSignO && cell7 === playerSignO)
   || (cell2 === playerSignO && cell5 === playerSignO && cell8 === playerSignO)) {
-    console.log(`${playerSignO}   is the won`);
     setTimeout(() => { // delay the show result box
       playBoard.classList.remove('show');
       resultBox.classList.add('show');
